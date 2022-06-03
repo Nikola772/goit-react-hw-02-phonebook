@@ -31,9 +31,15 @@ class App extends React.Component {
         const contact = {
           id: shortid.generate(),
            name,
-           number
-            
+           number            
         };
+
+        const searchNaem = this.state.contacts.map(contact => contact.name).includes(name);
+
+        if ( searchNaem ) {
+          alert(`${name} is already in contacts`);
+          return;
+        }
 
         this.setState(prevState => ({
           contacts: [contact, ...prevState.contacts],
